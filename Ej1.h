@@ -325,6 +325,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button5->TabIndex = 2;
 			this->button5->Text = L"Verificar si el número se encuentra";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &Ej1::button5_Click);
 			// 
 			// button4
 			// 
@@ -427,7 +428,7 @@ namespace LAB52MEGANMORALES1221120 {
 		MessageBox::Show("La cantidad de elementos es: " + myList->Count(), "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		
 	}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 	try {
 		int value = Convert::ToInt32(textBox1->Text);
 		int posicion = Convert::ToInt32(textBox2->Text);
@@ -439,6 +440,19 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 		
-}
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		int value = Convert::ToInt32(textBox1->Text);
+		
+		if (myList->Contains(value) == true) {
+
+			MessageBox::Show("El número si se encuentra en la lista ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else {
+			MessageBox::Show("El número no fue encontrado", "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+		
+	}
 };
 }

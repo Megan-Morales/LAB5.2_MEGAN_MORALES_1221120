@@ -36,9 +36,16 @@ int List::Count() {
 
 }
 bool List::Contains(int item) {
-
+	Node* temp = new Node();
+	temp = header;
+	while (temp != nullptr) {
+		
+		if (item == temp->data) {
+			return true;
+		}
+		temp = temp->next;
+	}
 	return false;
-
 }
 int List::IndexOf(int item) {
 
@@ -75,6 +82,7 @@ List::Node* List::GetItem(int index) {
 		if (count == index) {
 			return temp;
 		}
+
 		temp = temp->next;
 		count++;
 	}
