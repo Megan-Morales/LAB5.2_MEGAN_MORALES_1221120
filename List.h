@@ -53,14 +53,14 @@ public:
 	/// <summary>
 	/// Inserta un elemento en una posición específica de la lista
 	/// </summary>
-	/// <param name="index">Posición/Índice (base 0) dentro de la lista</param>
+	/// <param name="index">Posicion/indice (base 0) dentro de la lista</param>
 	/// <param name="item">Elemento a insertar</param>
 	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor a Count< / exception>
 	void Insert(int index, int item);
 	/// <summary>
 	/// Obtiene el valor del elemento en la posición indicada de la lista
 	/// </summary>
-	/// <param name="index">Posición/Índice (base 0) dentro de la lista</param>
+	/// <param name="index">Posición/indice (base 0) dentro de la lista</param>
 	/// <returns>Elemento en posición indicada</returns>
 	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count< / exception>
 	Node* GetItem(int index);

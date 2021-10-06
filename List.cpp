@@ -46,9 +46,25 @@ int List::IndexOf(int item) {
 
 }
 void List::Insert(int index, int item) {
+	Node* new_Nodo = new Node();
+	new_Nodo->data= item;
+	Node* temp = new Node();
+	temp = header;
+	int count = 0;
+	while (temp != nullptr) {
 
-
-
+		if (index == 0) {
+			new_Nodo->next = temp;
+			header = new_Nodo;
+			break;
+		}
+		if (count == index) {
+			temp->data = new_Nodo->data;
+			new_Nodo->next = new_Nodo;
+		}
+		temp = temp->next;
+		count++;
+	}
 }
 List::Node* List::GetItem(int index) {
 	Node* temp = new Node();

@@ -63,6 +63,8 @@ namespace LAB52MEGANMORALES1221120 {
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
 
 	private:
 		/// <summary>
@@ -99,6 +101,8 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox4->SuspendLayout();
@@ -106,7 +110,7 @@ namespace LAB52MEGANMORALES1221120 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(494, 27);
+			this->button1->Location = System::Drawing::Point(558, 23);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 30);
 			this->button1->TabIndex = 0;
@@ -173,6 +177,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button7->TabIndex = 1;
 			this->button7->Text = L"Insertar en la posición";
 			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &Ej1::button7_Click);
 			// 
 			// button2
 			// 
@@ -198,7 +203,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->listBox1->ItemHeight = 16;
 			this->listBox1->Location = System::Drawing::Point(494, 101);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(75, 724);
+			this->listBox1->Size = System::Drawing::Size(108, 724);
 			this->listBox1->TabIndex = 4;
 			// 
 			// groupBox2
@@ -333,12 +338,36 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &Ej1::button4_Click);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(488, 81);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(61, 17);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Posición";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(555, 81);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(34, 17);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Ítem";
+			// 
 			// Ej1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(615, 987);
+			this->ClientSize = System::Drawing::Size(661, 987);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->listBox1);
@@ -380,9 +409,11 @@ namespace LAB52MEGANMORALES1221120 {
 	void fillListBox() {
 		List::Node* temp = myList->GetItem(0);
 		listBox1->Items->Clear();
+		int count=0;
 		while (temp != nullptr) {
-			listBox1->Items->Add(temp->data);
+			listBox1->Items->Add(count+"-----------"+temp->data);
 			temp = temp->next;
+			count++;
 		}
 	}
 
@@ -396,5 +427,18 @@ namespace LAB52MEGANMORALES1221120 {
 		MessageBox::Show("La cantidad de elementos es: " + myList->Count(), "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		
 	}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		int value = Convert::ToInt32(textBox1->Text);
+		int posicion = Convert::ToInt32(textBox2->Text);
+		myList->Insert(posicion, value);
+		fillListBox();
+		/*MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);*/
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+		
+}
 };
 }
