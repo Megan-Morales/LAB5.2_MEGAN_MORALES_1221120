@@ -141,6 +141,9 @@
     <EmbeddedResource Include="Ej1.resx">
       <DependentUpon>Ej1.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ej2.resx">
+      <DependentUpon>Ej2.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mymenu.resx">
       <DependentUpon>Mymenu.h</DependentUpon>
     </EmbeddedResource>

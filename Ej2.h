@@ -48,11 +48,17 @@ namespace LAB52MEGANMORALES1221120 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Ej2";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// Ej2
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(869, 406);
+			this->Name = L"Ej2";
+			this->Text = L"Ej2";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};

@@ -7,7 +7,7 @@ class List
 	/// <summary>
 	/// Nodo simplemente enlazado
 	/// </summary>
-	struct Node
+public: struct Node
 	{
 		/// <summary>
 		/// Información a almacenar
@@ -42,7 +42,7 @@ public:
 	/// Verifica si el elemento indicado se encuentra en la lista
 	/// </summary>
 	/// <param name="item">Elemento a verificar</param>
-	/// <returns>Verdadero si el elemento está en la lista, Falso en caso contrario</returns>
+	/// <returns>Verdadero si el elemento está en la lista, Falso en caso contrario</returns>
 	bool Contains(int item);
 	/// <summary>
 	/// Obtiene el índice de la primera ocurrencia del elemento indicado dentro de la lista
@@ -63,7 +63,7 @@ public:
 	/// <param name="index">Posición/Índice (base 0) dentro de la lista</param>
 	/// <returns>Elemento en posición indicada</returns>
 	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count< / exception>
-	int GetItem(int index);
+	Node* GetItem(int index);
 	/// <summary>
 	/// Cambia el elemento en la posición indicada de la lista
 	/// </summary>

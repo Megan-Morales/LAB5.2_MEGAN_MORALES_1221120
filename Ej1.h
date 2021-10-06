@@ -1,3 +1,4 @@
+#include "List.h"
 #pragma once
 
 namespace LAB52MEGANMORALES1221120 {
@@ -15,12 +16,16 @@ namespace LAB52MEGANMORALES1221120 {
 	public ref class Ej1 : public System::Windows::Forms::Form
 	{
 	public:
+
+		List* myList;
+
 		Ej1(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			myList = new List();
 		}
 
 	protected:
@@ -137,7 +142,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->groupBox1->Controls->Add(this->textBox2);
 			this->groupBox1->Location = System::Drawing::Point(29, 101);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(406, 189);
+			this->groupBox1->Size = System::Drawing::Size(419, 189);
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Operaciones de inserción";
@@ -178,6 +183,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button2->TabIndex = 0;
 			this->button2->Text = L"Insertar al final";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &Ej1::button2_Click);
 			// 
 			// textBox2
 			// 
@@ -204,14 +210,14 @@ namespace LAB52MEGANMORALES1221120 {
 			this->groupBox2->Controls->Add(this->button3);
 			this->groupBox2->Location = System::Drawing::Point(29, 339);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(406, 200);
+			this->groupBox2->Size = System::Drawing::Size(419, 200);
 			this->groupBox2->TabIndex = 4;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Operaciones de extracción";
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(334, 88);
+			this->textBox4->Location = System::Drawing::Point(345, 87);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(55, 22);
 			this->textBox4->TabIndex = 6;
@@ -258,7 +264,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->groupBox4->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->groupBox4->Location = System::Drawing::Point(29, 589);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(406, 251);
+			this->groupBox4->Size = System::Drawing::Size(419, 251);
 			this->groupBox4->TabIndex = 5;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Operaciones de búsqueda";
@@ -354,5 +360,33 @@ namespace LAB52MEGANMORALES1221120 {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+	
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		try {
+			int value = Convert::ToInt32(textBox1->Text);
+			myList->Add(value);
+			MessageBox::Show("El número fue agregado con éxito " , "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			fillListBox();
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+		}
+
+	}
+	//Metodo para llenar la lista :D
+	void fillListBox() {
+		List::Node* temp = myList->GetItem(0);
+		listBox1->Items->Clear();
+		while (temp != nullptr) {
+			listBox1->Items->Add(temp->data);
+			temp = temp->next;
+		}
+	}
+
+
+
+
 };
 }
