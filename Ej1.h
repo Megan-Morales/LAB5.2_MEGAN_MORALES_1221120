@@ -331,6 +331,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button4->TabIndex = 1;
 			this->button4->Text = L"Contar la cantidad de elementos";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &Ej1::button4_Click);
 			// 
 			// Ej1
 			// 
@@ -389,6 +390,11 @@ namespace LAB52MEGANMORALES1221120 {
 		myList->Clear();
 		fillListBox();
 		MessageBox::Show("Lista vaciada con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		 myList->Count();
+		MessageBox::Show("La cantidad de elementos es: " + myList->Count(), "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+		
 	}
 };
 }

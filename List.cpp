@@ -24,9 +24,16 @@ void List::Clear() {
 	header = nullptr;
 }
 int List::Count() {
+	Node* temp = new Node();
+	temp = header;
+	int count = 0;
+	while (temp != nullptr) {
+		
+		temp = temp->next;
+		count++;
+	}
+	return count;
 
-
-	return 0;
 }
 bool List::Contains(int item) {
 
