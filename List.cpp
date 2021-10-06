@@ -21,9 +21,7 @@ void List::Add(int item) {
 	}
 }
 void List::Clear() {
-
-
-
+	header = nullptr;
 }
 int List::Count() {
 

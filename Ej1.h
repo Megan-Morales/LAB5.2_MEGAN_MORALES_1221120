@@ -161,7 +161,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button11->Name = L"button11";
 			this->button11->Size = System::Drawing::Size(313, 23);
 			this->button11->TabIndex = 2;
-			this->button11->Text = L"Cambiar el elemento de la posición";
+			this->button11->Text = L"Remplazar el elemento de la posición";
 			this->button11->UseVisualStyleBackColor = false;
 			// 
 			// button7
@@ -249,8 +249,9 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(313, 23);
 			this->button3->TabIndex = 1;
-			this->button3->Text = L"Extraer todos los elementos";
+			this->button3->Text = L"Vaciar lista";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &Ej1::button3_Click);
 			// 
 			// groupBox4
 			// 
@@ -336,7 +337,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(615, 876);
+			this->ClientSize = System::Drawing::Size(615, 987);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->listBox1);
@@ -366,16 +367,15 @@ namespace LAB52MEGANMORALES1221120 {
 		try {
 			int value = Convert::ToInt32(textBox1->Text);
 			myList->Add(value);
-			MessageBox::Show("El número fue agregado con éxito " , "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 			fillListBox();
+			/*MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);*/
 		}
 		catch (Exception^ e) {
 			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
-
 		}
 
 	}
-	//Metodo para llenar la lista :D
+	//Metodo para llenar y actualizar la lista :D
 	void fillListBox() {
 		List::Node* temp = myList->GetItem(0);
 		listBox1->Items->Clear();
@@ -385,8 +385,10 @@ namespace LAB52MEGANMORALES1221120 {
 		}
 	}
 
-
-
-
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		myList->Clear();
+		fillListBox();
+		MessageBox::Show("Lista vaciada con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+	}
 };
 }
