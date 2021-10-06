@@ -167,6 +167,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button11->TabIndex = 2;
 			this->button11->Text = L"Remplazar el elemento de la posición";
 			this->button11->UseVisualStyleBackColor = false;
+			this->button11->Click += gcnew System::EventHandler(this, &Ej1::button11_Click);
 			// 
 			// button7
 			// 
@@ -303,6 +304,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button8->TabIndex = 4;
 			this->button8->Text = L"Obtener el valor en la posición";
 			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &Ej1::button8_Click);
 			// 
 			// button6
 			// 
@@ -412,7 +414,7 @@ namespace LAB52MEGANMORALES1221120 {
 		listBox1->Items->Clear();
 		int count=0;
 		while (temp != nullptr) {
-			listBox1->Items->Add(count+"-----------"+temp->data);
+			listBox1->Items->Add(count+"---------------"+temp->data);
 			temp = temp->next;
 			count++;
 		}
@@ -429,30 +431,56 @@ namespace LAB52MEGANMORALES1221120 {
 		
 	}
 	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
-		int value = Convert::ToInt32(textBox1->Text);
-		int posicion = Convert::ToInt32(textBox2->Text);
-		myList->Insert(posicion, value);
-		fillListBox();
-		/*MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);*/
-	}
-	catch (Exception^ e) {
-		MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
+		try {
+			int value = Convert::ToInt32(textBox1->Text);
+			int posicion = Convert::ToInt32(textBox2->Text);
+			myList->Insert(posicion, value);
+			fillListBox();
+			/*MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);*/
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 		
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-		int value = Convert::ToInt32(textBox1->Text);
-		
-		if (myList->Contains(value) == true) {
+		try {
+			int value = Convert::ToInt32(textBox1->Text);
+			if (myList->Contains(value) == true) {
 
-			MessageBox::Show("El número si se encuentra en la lista ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("El número si se encuentra en la lista ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else {
+				MessageBox::Show("El número no fue encontrado", "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 		}
-		else {
-			MessageBox::Show("El número no fue encontrado", "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}	
+	}
+	private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			int value = Convert::ToInt32(textBox1->Text);
+			int posicion = Convert::ToInt32(textBox5->Text);
+			myList->SetItem(posicion, value);
+			fillListBox();
+			MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 		}
-		
-		
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+
+	}
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		try {
+			int posicion = Convert::ToInt32(textBox3->Text);
+			List::Node* temp = myList->GetItem(posicion);
+			MessageBox::Show("El número en la posición  "+posicion +"  es:  "+temp->data, "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 };
 }

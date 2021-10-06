@@ -54,7 +54,7 @@ int List::IndexOf(int item) {
 }
 void List::Insert(int index, int item) {
 	Node* new_Nodo = new Node();
-	new_Nodo->data= item;
+	new_Nodo->data = item;
 	Node* temp = new Node();
 	temp = header;
 	int count = 0;
@@ -66,8 +66,8 @@ void List::Insert(int index, int item) {
 			break;
 		}
 		if (count == index) {
-			temp->data = new_Nodo->data;
 			new_Nodo->next = new_Nodo;
+			temp->data = new_Nodo->data;
 		}
 		temp = temp->next;
 		count++;
@@ -89,9 +89,20 @@ List::Node* List::GetItem(int index) {
 	return temp; 
 }
 void List::SetItem(int index, int item) {
+	Node* new_Nodo = new Node();
+	new_Nodo->data = item;
+	Node* temp = new Node();
+	temp = header;
+	int count = 0;
+	while (temp != nullptr) {
 
-
-
+		if (count == index) {
+			temp->data = new_Nodo->data;
+			new_Nodo->next = new_Nodo;
+		}
+		temp = temp->next;
+		count++;
+	}
 }
 int List::LastIndexOf(int item) {
 

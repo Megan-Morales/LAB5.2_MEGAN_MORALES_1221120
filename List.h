@@ -48,45 +48,45 @@ public:
 	/// Obtiene el índice de la primera ocurrencia del elemento indicado dentro de la lista
 	/// </summary>
 	/// <param name="item">Elemento a verificar</param>
-	/// <returns>El índice (base 0) de la primera ocurrencia si lo encontró, -1 en caso contrario< / returns>
+	/// <returns>El índice (base 0) de la primera ocurrencia si lo encontró, -1 en caso contrario</returns>
 	int IndexOf(int item);
 	/// <summary>
 	/// Inserta un elemento en una posición específica de la lista
 	/// </summary>
 	/// <param name="index">Posicion/indice (base 0) dentro de la lista</param>
 	/// <param name="item">Elemento a insertar</param>
-	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor a Count< / exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor a Count</exception>
 	void Insert(int index, int item);
 	/// <summary>
 	/// Obtiene el valor del elemento en la posición indicada de la lista
 	/// </summary>
 	/// <param name="index">Posición/indice (base 0) dentro de la lista</param>
 	/// <returns>Elemento en posición indicada</returns>
-	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count< / exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count</exception>
 	Node* GetItem(int index);
 	/// <summary>
 	/// Cambia el elemento en la posición indicada de la lista
 	/// </summary>
 	/// <param name="index">Posición/Índice (base 0) dentro de la lista</param>
 	/// <param name="item">Elemento a actualizar</param>
-	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count< / exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count</exception>
 	void SetItem(int index, int item);
 	/// <summary>
 	/// Obtiene el índice de la última ocurrencia del elemento indicado dentro de la lista
 	/// </summary>
 	/// <param name="item">Elemento a verificar</param>
-	/// <returns>El índice (base 0) de la última ocurrencia si lo encontró, -1 en caso contrario< / returns>
+	/// <returns>El índice (base 0) de la última ocurrencia si lo encontró, -1 en caso contrario</returns>
 	int LastIndexOf(int item);
 	/// <summary>
 	/// Elimina la primera ocurrencia del elemento en la lista
 	/// </summary>
 	/// <param name="item">Elemento a eliminar</param>
-	/// <returns> Verdadero si el elemento fue removido, Falso si no fue encontrado</returns>
+	/// <returns> Verdadero si el elemento fue removido, Falso si no fue encontrado</returns>
 	bool Remove(int item);
 	/// <summary>
 	/// Elimina el elemento en la posición de la lista indicada
 	/// </summary>
 	/// <param name="index">Posición/Índice (base 0) dentro de la lista</param>
-	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count< / exception>
+	/// <exception cref="System.ArgumentOutOfRangeException">index menor a 0 o index mayor o igual a Count</exception>
 	void RemoveAt(int index);
 };
