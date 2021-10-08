@@ -235,8 +235,9 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button10->Name = L"button10";
 			this->button10->Size = System::Drawing::Size(313, 23);
 			this->button10->TabIndex = 3;
-			this->button10->Text = L"Extraer en la posición";
+			this->button10->Text = L"Eliminar en la posición";
 			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &Ej1::button10_Click);
 			// 
 			// button9
 			// 
@@ -245,7 +246,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(313, 23);
 			this->button9->TabIndex = 2;
-			this->button9->Text = L"Extraer la primera ocurrencia";
+			this->button9->Text = L"Eliminar la primera ocurrencia";
 			this->button9->UseVisualStyleBackColor = false;
 			// 
 			// button3
@@ -462,9 +463,14 @@ namespace LAB52MEGANMORALES1221120 {
 		try {
 			int value = Convert::ToInt32(textBox1->Text);
 			int posicion = Convert::ToInt32(textBox5->Text);
-			myList->SetItem(posicion, value);
-			fillListBox();
-			MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			if (posicion <= (myList->Count()-1) && posicion>=0) {
+				myList->SetItem(posicion, value);
+				fillListBox();
+				MessageBox::Show("El número fue agregado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			}
+			else {
+				MessageBox::Show("La posición indicada no existe ", "Operación incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 		}
 		catch (Exception^ e) {
 			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -481,6 +487,22 @@ namespace LAB52MEGANMORALES1221120 {
 		catch (Exception^ e) {
 			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+	}
+	private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			int posicion = Convert::ToInt32(textBox4->Text);
+			if (posicion <= (myList->Count() - 1) && posicion >= 0) {
+				myList->RemoveAt(posicion);
+				fillListBox();
+				MessageBox::Show("El número fue eliminado con éxito  ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else {
+				MessageBox::Show("La posición indicada no existe ", "Operación incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}	
 	}
 };
 }

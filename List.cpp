@@ -65,9 +65,9 @@ void List::Insert(int index, int item) {
 			header = new_Nodo;
 			break;
 		}
-		if (count == index) {
-			new_Nodo->next = new_Nodo;
-			temp->data = new_Nodo->data;
+		if (index > 0 && count ==(index-1)) {
+			new_Nodo->next = temp->next;
+			temp->next = new_Nodo;
 		}
 		temp = temp->next;
 		count++;
@@ -100,6 +100,7 @@ void List::SetItem(int index, int item) {
 			temp->data = new_Nodo->data;
 			new_Nodo->next = new_Nodo;
 		}
+
 		temp = temp->next;
 		count++;
 	}
@@ -116,6 +117,20 @@ bool List::Remove(int item) {
 }
 void List::RemoveAt(int index) {
 
+	Node* temp = new Node();
+	temp = header;
+	int count = 0;
+	while (temp != nullptr) {
 
-
+		if (index == 0) {
+			header = temp->next;
+			break;
+		}
+		if (index> 0 && count==(index-1)) {
+			temp->next=temp->next->next;
+		}
+		
+		count++;
+		temp = temp->next;
+	}
 }
