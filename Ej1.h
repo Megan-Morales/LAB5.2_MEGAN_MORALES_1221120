@@ -248,6 +248,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button9->TabIndex = 2;
 			this->button9->Text = L"Eliminar la primera ocurrencia";
 			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Click += gcnew System::EventHandler(this, &Ej1::button9_Click);
 			// 
 			// button3
 			// 
@@ -287,6 +288,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button12->TabIndex = 7;
 			this->button12->Text = L"Obtener la última posición del elemento";
 			this->button12->UseVisualStyleBackColor = false;
+			this->button12->Click += gcnew System::EventHandler(this, &Ej1::button12_Click);
 			// 
 			// textBox3
 			// 
@@ -317,6 +319,7 @@ namespace LAB52MEGANMORALES1221120 {
 			this->button6->TabIndex = 3;
 			this->button6->Text = L"Obtener la primera posición del elemento";
 			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &Ej1::button6_Click);
 			// 
 			// button5
 			// 
@@ -504,5 +507,48 @@ namespace LAB52MEGANMORALES1221120 {
 			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}	
 	}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			int item = Convert::ToInt32(textBox1->Text);
+			if (myList->IndexOf(item)==-1) {
+				MessageBox::Show("El número indicado no existe ", "Operación incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else {
+				MessageBox::Show("El número " + item + ": su primera posición es:  " + myList->IndexOf(item), "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}			
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+}
+private: System::Void button12_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			int item = Convert::ToInt32(textBox1->Text);
+			if (myList->LastIndexOf(item) == -1) {
+				MessageBox::Show("El número indicado no existe ", "Operación incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			else {
+				MessageBox::Show("El número " + item + ": su última posición es:  " + myList->LastIndexOf(item), "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+}
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			int item = Convert::ToInt32(textBox1->Text);
+			if (myList->Remove(item) == true) {
+				fillListBox();
+				MessageBox::Show("El número indicado fue eliminado con éxito ", "Operación correcta", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+			}
+			else {
+				MessageBox::Show("El número indicado no existe ", "Operación incorrecta", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		catch (Exception^ e) {
+			MessageBox::Show("Error encontrado: " + e->Message, "Operación fallida", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+}
 };
 }

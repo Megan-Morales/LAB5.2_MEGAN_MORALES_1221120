@@ -48,9 +48,21 @@ bool List::Contains(int item) {
 	return false;
 }
 int List::IndexOf(int item) {
+	Node* temp = new Node();
+	temp = header;
+	
+	int posicion = 0;
 
-	return 0;
+	while (temp != nullptr) {
 
+		if (item== temp->data) {
+			
+			return posicion;
+		}
+		temp = temp->next;
+		posicion++;
+	}
+	return -1;
 }
 void List::Insert(int index, int item) {
 	Node* new_Nodo = new Node();
@@ -107,12 +119,35 @@ void List::SetItem(int index, int item) {
 }
 int List::LastIndexOf(int item) {
 
-	return 0;
+	Node* temp = new Node();
+	temp = header;
+
+	int posicion = 0;
+	int posicion2 = -1;
+
+	while (temp != nullptr) {
+
+		if (item == temp->data) {
+
+			posicion2=posicion;
+
+		}
+		temp = temp->next;
+		posicion++;
+	}
+	return posicion2; 
 
 }
 bool List::Remove(int item) {
-
-	return false;
+	
+	if (IndexOf(item) == -1) {
+		return false;
+	}
+	else {
+		RemoveAt(IndexOf(item));
+		return true;
+	}
+	
 
 }
 void List::RemoveAt(int index) {
