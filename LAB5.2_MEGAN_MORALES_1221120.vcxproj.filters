@@ -21,9 +21,6 @@
     <ClCompile Include="Ej1.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Ej2.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="List.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -33,9 +30,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Ej1.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Ej2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="List.h">
