@@ -123,6 +123,7 @@
     <ClCompile Include="Ej1.cpp" />
     <ClCompile Include="Ej2.cpp" />
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="MazoLista.cpp" />
     <ClCompile Include="Mymenu.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="List.h" />
+    <ClInclude Include="MazoLista.h" />
     <ClInclude Include="Mymenu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
